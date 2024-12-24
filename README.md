@@ -1,61 +1,103 @@
-# forms-builder
+# Dynamic Form
 
-This template should help get you started developing with Vue 3 in Vite.
+Dynamic Form: A scalable Vue 3 + TypeScript template for creating dynamic forms with ease. Features include customizable fields, TailwindCSS styling, reactive state management, and built-in validation. Perfect for scaffolding projects requiring flexible and reusable form systems.
 
-## Recommended IDE Setup
+## Run Locally
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Clone the project
 
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-yarn
+```bash
+  git clone https://github.com/aditya-df/dynamic-form-template-vue.git
 ```
 
-### Compile and Hot-Reload for Development
+Go to the project directory
 
-```sh
-yarn dev
+```bash
+  cd dynamic-form-template-vue
 ```
 
-### Type-Check, Compile and Minify for Production
+Install dependencies
 
-```sh
-yarn build
+```bash
+  npm install
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+Start the server
 
-```sh
-yarn test:unit
+```bash
+  npm run dev
 ```
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+## Documentation
 
-```sh
-yarn test:e2e:dev
-```
+[Documentation](https://linktodocumentation)
 
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
+## Features
 
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
+- Dynamic form field generation
+- Type-safe form handling with TypeScript
+- Built with Vue 3 Composition API
+- Tailwind CSS for styling
+- Unit testing with Vitest
+- E2E testing with Cypress
 
-```sh
-yarn build
-yarn test:e2e
-```
+## Roadmap
 
-### Lint with [ESLint](https://eslint.org/)
+### Version 1
 
-```sh
-yarn lint
-```
+- Add more input types
+- Create a UI for form adjustments
+- Implement light/dark mode toggle
+- Enable live previews
+- Add functionality to export generated code
+- Reset form to default values
+
+### Version 2
+
+- Multi-step forms
+- File upload with drag-and-drop functionality
+- Custom error messages for specific rules
+- Asynchronous validation
+- Conditional logic
+- ARIA attributes for enhanced accessibility
+
+### Version 3
+
+- Localization support for validation messages
+- Save and load form configurations
+- Auto-save form state
+- Clone forms for reuse
+- Progress bars for multi-step forms
+- Keyboard navigation support
+
+### Version 4
+
+- Full theme customization via a config file or UI
+- Predefined templates/themes for different use cases
+
+### Version 5
+
+- Export as JSON configuration
+- Export to multiple formats
+- Code preview in real-time for exportable files
+- Integrated in-app documentation/tutorials for using the template
+
+### Version 6
+
+- Connect forms to APIs for dynamic field population
+
+### Version 7
+
+- Track form interaction metrics
+
+### Version 8
+
+- One-click deployment options for demo purposes
+
+## Authors
+
+- [@aditya-df](https://github.com/aditya-df)
+
+## Support
+
+For support, email aditya@lazypeople.club or join our Discord channel.
