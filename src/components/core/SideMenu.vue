@@ -40,7 +40,11 @@
                 : 'max-h-0 p-0 invisible opacity-0'
             "
           >
-            <TheButton size="sm" :icon="['fas', 'download']" class="text-left"
+            <TheButton
+              size="sm"
+              :icon="['fas', 'download']"
+              class="text-left"
+              @click="emit('export')"
               >Export code</TheButton
             >
             <TheButton size="sm" :icon="['fas', 'floppy-disk']" class="text-left" disabled
@@ -78,7 +82,7 @@ import { FormConfig } from '@/types'
 import FormConfiguration from '../composite/FormConfiguration.vue'
 import TheButton from '../elements/TheButton.vue'
 
-const emit = defineEmits(['update'])
+const emit = defineEmits(['update', 'export'])
 
 const isDropdownShown = ref(false)
 const isSideMenuShown = ref(false)

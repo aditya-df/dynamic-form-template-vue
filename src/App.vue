@@ -1,12 +1,12 @@
 <template>
   <div class="bg-gray-100 min-h-screen flex items-center py-12">
-    <DynamicForm @submit="submit" />
+    <DynamicForm />
   </div>
 </template>
 
 <script setup lang="ts">
 import DynamicForm from './components/core/DynamicForm.vue'
-import type { DynamicFormData } from '@/types/forms'
+// import type { DynamicFormData } from '@/types/forms'
 
 // const forms = reactive<FormField[]>([
 //   {
@@ -123,7 +123,7 @@ import type { DynamicFormData } from '@/types/forms'
 //   // },
 // ])
 
-const submit = (data: DynamicFormData) => {
-  console.log(data)
-}
+// const submit = (data: DynamicFormData) => {
+//   console.log(data)
+// }
 </script>
