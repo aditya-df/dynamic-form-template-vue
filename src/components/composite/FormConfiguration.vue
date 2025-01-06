@@ -1,5 +1,5 @@
 <template>
-  <div class="grid gap-y-1 border p-4">
+  <div class="grid gap-y-1 border p-4 bg-white">
     <div class="flex justify-end gap-2 mb-2">
       <TheButton size="sm" :icon="['fas', 'copy']" @click="$emit('duplicate')" icon-only />
       <TheButton size="sm" :icon="['fas', 'trash']" @click="$emit('delete')" icon-only />

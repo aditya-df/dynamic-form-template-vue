@@ -40,3 +40,37 @@ export type FormFieldModel = {
   value: string | Array<any> | null
   component: any
 }
+
+export class FormConfig {
+  type: string
+  id: string
+  label: string
+  placeholder: string
+  disabled: boolean
+
+  constructor() {
+    this.type = ''
+    this.id = ''
+    this.label = 'Label'
+    this.placeholder = 'Input your value here'
+    this.disabled = false
+  }
+
+  reset() {
+    this.type = ''
+    this.id = ''
+    this.label = 'Label'
+    this.placeholder = 'Input your value here'
+    this.disabled = false
+  }
+
+  clone(): FormConfig {
+    const newConfig = new FormConfig()
+    newConfig.type = this.type
+    newConfig.id = this.id
+    newConfig.label = this.label
+    newConfig.placeholder = this.placeholder
+    newConfig.disabled = this.disabled
+    return newConfig
+  }
+}
