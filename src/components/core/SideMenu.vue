@@ -1,21 +1,4 @@
 <template>
-  <form
-    v-if="formsCreated.length > 0"
-    class="mx-auto shadow-md px-10 py-6 border rounded w-full max-w-3xl grid gap-4 bg-slate-50"
-    @submit.prevent="submit"
-  >
-    <template v-for="form in modifiedForms" :key="form.field.id">
-      <component
-        :is="form.component"
-        :field="form.field"
-        v-model="form.value"
-        @change="removeError(form)"
-      />
-    </template>
-
-    <TheButton type="submit" variant="primary"> Submit Form </TheButton>
-  </form>
-
   <section
     class="absolute inset-y-0 right-0 bg-slate-50 shadow-md rounded-s-lg w-full transition-all"
     :class="isSideMenuShown ? 'max-w-xs px-6' : 'max-w-0'"
@@ -33,6 +16,9 @@
         :icon="['fas', 'angles-right']"
         @click="toggleSideMenu"
         class="z-10"
+        :icon-class="
+          !isSideMenuShown ? 'block rotate-180 transition-transform' : 'block transition-transform'
+        "
       />
     </div>
 
@@ -86,17 +72,13 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, shallowRef, watch, ref } from 'vue'
-import { FormConfig, type FormField, type FormFieldModel } from '@/types/forms'
+import { ref, reactive, watch } from 'vue'
+import { FormConfig } from '@/types'
 
-import TheInput from './TheInput.vue'
-import TheTextarea from './TheTextarea.vue'
-import TheSelect from './TheSelect.vue'
-import TheRadioButton from './TheRadioButton.vue'
-import TheSwitch from './TheSwitch.vue'
-import TheCheckbox from './TheCheckbox.vue'
-import TheButton from '../elements/TheButton.vue'
 import FormConfiguration from '../composite/FormConfiguration.vue'
+import TheButton from '../elements/TheButton.vue'
+
+const emit = defineEmits(['update'])
 
 const isDropdownShown = ref(false)
 const isSideMenuShown = ref(false)
@@ -122,77 +104,11 @@ const deleteForm = (index: number) => {
   formsCreated.splice(index, 1)
 }
 
-const decideComponent = (form: FormField) => {
-  if (form.type === 'text') {
-    return TheInput
-  } else if (form.type === 'textarea') {
-    return TheTextarea
-  } else if (form.type === 'select') {
-    return TheSelect
-  } else if (form.type === 'radio') {
-    return TheRadioButton
-  } else if (form.type === 'switch') {
-    return TheSwitch
-  } else if (form.type === 'checkbox') {
-    return TheCheckbox
-  }
-  return TheInput
-}
-
-const modifiedForms = shallowRef()
 watch(
   formsCreated,
   (newForms) => {
-    modifiedForms.value = newForms.map((form) => {
-      return {
-        field: form,
-        component: decideComponent(form),
-        // value: form.multiple || form.type == 'checkbox' ? [] : null,
-        value: null,
-      }
-    })
+    emit('update', newForms)
   },
   { deep: true },
 )
-
-// Processing form submission
-const emit = defineEmits(['submit'])
-
-const removeError = (form: FormFieldModel) => {
-  if (!modifiedForms.value) return
-
-  modifiedForms.value = modifiedForms.value.map((f: any) => {
-    if (f.field.id === form.field.id) {
-      return {
-        ...f,
-        field: { ...f.field, error: false },
-      }
-    }
-    return f
-  })
-}
-
-const submit = () => {
-  if (!modifiedForms.value) return
-
-  if (modifiedForms.value.some((form: any) => !form.value)) {
-    return (modifiedForms.value = modifiedForms.value.map((form: any) => {
-      if (!form.value) {
-        return {
-          ...form,
-          field: { ...form.field, error: true },
-        }
-      }
-      return form
-    }))
-  }
-
-  emit(
-    'submit',
-    modifiedForms.value.reduce(
-      (acc: any, form: any) => ({ ...acc, [form.field.id]: form.value }),
-      {},
-    ),
-  )
-}
 </script>

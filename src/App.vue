@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import DynamicForm from './components/forms/DynamicForm.vue'
+import DynamicForm from './components/core/DynamicForm.vue'
 import type { DynamicFormData } from '@/types/forms'
 
 // const forms = reactive<FormField[]>([
